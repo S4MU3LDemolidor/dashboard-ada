@@ -341,7 +341,7 @@ export default function Dashboard() {
             <Package className="h-8 w-8 text-blue-600" />
             <div>
               <h1 className="text-3xl font-bold text-gray-900">
-                📦 Distribuição de Cestas Básicas - Programa ADA (2019–2025)
+                Distribuição de Cestas Básicas - Programa ADA (2019–2025)
               </h1>
               <p className="text-gray-600 mt-1">
                 Análise abrangente da distribuição de assistência alimentar entre grupos beneficiários
@@ -717,7 +717,7 @@ export default function Dashboard() {
 
         {/* Footer */}
         <div className="text-center py-6 border-t border-gray-200">
-          <p className="text-sm text-gray-500">Fonte: Arquivos JSON ADA (2019–2025) — Enviado pelo usuário</p>
+          <p className="text-sm text-gray-500">Fonte: Arquivos JSON ADA (2019–2025)</p>
         </div>
       </div>
     </div>
