@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -82,7 +82,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [], // Removido o plugin tailwindcss-animate que estava causando o erro
+  plugins: [],
 } satisfies Config
 
 export default config
