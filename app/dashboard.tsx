@@ -208,7 +208,8 @@ export default function Dashboard() {
     // If a specific group is selected, show yearly data for that group
     if (selectedGroup !== "all") {
       return yearlyEvolution.map((yearData) => {
-        const value = yearData[selectedGroup as keyof typeof yearData] || 0
+        const rawValue = yearData[selectedGroup as keyof typeof yearData] || 0
+        const value = typeof rawValue === "number" ? rawValue : Number(rawValue)
         return {
           name: yearData.year,
           value,
