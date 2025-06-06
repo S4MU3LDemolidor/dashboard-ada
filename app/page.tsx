@@ -1,103 +1,103 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+import dynamic from "next/dynamic"
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+interface MonthlyStats {
+  month: string
+  total: number
+}
+
+interface YearlyData {
+  year: string
+  indigenas: number
+  quilombolas: number
+  extrativistas: number
+  pescadores: number
+  emergencial: number
+  ciganas: number
+  catadores: number
+  assentados: number
+  rural: number
+  total: number
+}
+
+interface GroupDistributionData {
+  name: string
+  value: number
+  fill: string
+}
+
+interface DataRecord {
+  anomes_s: string
+  codigo_ibge: string
+  qtd_cestas_alim_entr_fam_indigenas?: number
+  qtd_cestas_alim_entr_fam_quilombolas?: number
+  qtd_cestas_alim_entr_fam_extrativistas?: number
+  qtd_cestas_alim_entr_fam_pescadores?: number
+  qtd_cestas_alim_entr_fam_atend_emergencial?: number
+  qtd_cestas_alim_entr_fam_ciganas?: number
+  qtd_cestas_alim_entr_fam_catadores?: number
+  qtd_cestas_alim_entr_fam_assentados?: number
+  qtd_cestas_alim_entr_fam_rural?: number
+  qtd_total_cestas_alim_entr: number
+}
+
+const beneficiaryGroups = {
+  indigenas: { label: "Indígenas", color: "hsl(220, 70%, 50%)" },
+  quilombolas: { label: "Quilombolas", color: "hsl(160, 70%, 50%)" },
+  extrativistas: { label: "Extrativistas", color: "hsl(30, 70%, 50%)" },
+  pescadores: { label: "Pescadores", color: "hsl(200, 70%, 50%)" },
+  atend_emergencial: { label: "Emergencial", color: "hsl(0, 70%, 50%)" },
+  ciganas: { label: "Ciganos", color: "hsl(280, 70%, 50%)" },
+  catadores: { label: "Catadores", color: "hsl(340, 70%, 50%)" },
+  assentados: { label: "Assentados", color: "hsl(40, 70%, 50%)" },
+  rural: { label: "Rural", color: "hsl(120, 70%, 50%)" },
+}
+
+// Static sample data to avoid hydration mismatch
+const generateStaticSampleData = (): DataRecord[] => {
+  const sampleData: DataRecord[] = []
+  const years = ["2019", "2020", "2021", "2022", "2023", "2024", "2025"]
+  const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+
+  years.forEach((year, yearIndex) => {
+    months.forEach((month, monthIndex) => {
+      const baseAmount = 1000 + yearIndex * 500 + monthIndex * 50
+      // Use deterministic values instead of Math.random()
+      const variation = (yearIndex * 7 + monthIndex * 3) % 100
+
+      sampleData.push({
+        anomes_s: `${year}${month}`,
+        codigo_ibge: "11",
+        qtd_cestas_alim_entr_fam_indigenas: Math.floor(baseAmount * 0.4 + variation * 2),
+        qtd_cestas_alim_entr_fam_quilombolas: Math.floor(baseAmount * 0.3 + variation * 1.5),
+        qtd_cestas_alim_entr_fam_extrativistas: Math.floor(baseAmount * 0.1 + variation),
+        qtd_cestas_alim_entr_fam_pescadores: Math.floor(baseAmount * 0.1 + variation * 0.8),
+        qtd_cestas_alim_entr_fam_atend_emergencial: Math.floor(baseAmount * 0.05 + variation * 0.5),
+        qtd_cestas_alim_entr_fam_ciganas: Math.floor(baseAmount * 0.02 + variation * 0.2),
+        qtd_cestas_alim_entr_fam_catadores: Math.floor(baseAmount * 0.02 + variation * 0.2),
+        qtd_cestas_alim_entr_fam_assentados: Math.floor(baseAmount * 0.01 + variation * 0.1),
+        qtd_cestas_alim_entr_fam_rural: Math.floor(baseAmount * 0.01 + variation * 0.1),
+        qtd_total_cestas_alim_entr: Math.floor(baseAmount + variation * 3),
+      })
+    })
+  })
+
+  return sampleData
+}
+
+const DashboardComponent = dynamic(() => import("./dashboard"), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="text-center">
+        <div className="h-12 w-12 text-blue-600 mx-auto mb-4 animate-pulse">📦</div>
+        <p className="text-gray-600">Carregando dados do Programa ADA...</p>
+      </div>
     </div>
-  );
+  ),
+})
+
+export default function Page() {
+  return <DashboardComponent />
 }
